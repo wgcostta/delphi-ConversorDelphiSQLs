@@ -4,8 +4,7 @@ interface
 
 uses
   Cloud.Rest,
-  Cloud.Dto.Tabela,
-   Vcl.Graphics;
+  Cloud.Dto.Tabela;
 
 CONST 
 TemplatePadrao =  ' <?xml version="1.0" encoding="utf-8" ?> ' +
@@ -66,7 +65,7 @@ TemplatePadrao =  ' <?xml version="1.0" encoding="utf-8" ?> ' +
      { public declarations }
     property result : string read Fresult write Setresult;
     function ConsumirSQL(sSql: string): String;
-   class function HexToTColor(sColor: string): string;
+     
   published
      { published declarations }
   end;
@@ -75,7 +74,7 @@ TemplatePadrao =  ' <?xml version="1.0" encoding="utf-8" ?> ' +
 implementation
 
 uses
-  REST.Json, System.JSON,  Winapi.Windows, System.SysUtils;
+  REST.Json, System.JSON;
 
 { TVSMFormataSQL }
 
@@ -104,16 +103,6 @@ end;
 procedure TVSMFormataSQL.Setresult(const Value: string);
 begin
   Fresult := Value;
-end;
-
-class function TVSMFormataSQL.HexToTColor(sColor: string): string;
-begin
-   Result :=
-     RGB(
-       StrToInt('$'+Copy(sColor, 1, 2)),
-       StrToInt('$'+Copy(sColor, 3, 2)),
-       StrToInt('$'+Copy(sColor, 5, 2))
-     ).ToString;
 end;
 
 function TVSMFormataSQL.ToJsonString: string;

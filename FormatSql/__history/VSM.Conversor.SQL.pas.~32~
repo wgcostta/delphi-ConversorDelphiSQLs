@@ -75,7 +75,7 @@ TemplatePadrao =  ' <?xml version="1.0" encoding="utf-8" ?> ' +
 implementation
 
 uses
-  REST.Json, System.JSON,  Winapi.Windows, System.SysUtils;
+  REST.Json, System.JSON;
 
 { TVSMFormataSQL }
 

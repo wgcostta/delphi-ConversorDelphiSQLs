@@ -51,6 +51,16 @@ type
     btnSQL: TButton;
     btnClear: TButton;
     btnCopy: TButton;
+    Label7: TLabel;
+    pgHexToColor: TTabSheet;
+    lblColorWeb: TLabel;
+    lblTColor: TLabel;
+    LinkLabel1: TLinkLabel;
+    ACT_COLOR: TAction;
+    edtCorWeb: TEdit;
+    edtTColor: TEdit;
+    separador: TLabel;
+    Button1: TButton;
     procedure FormShow(Sender: TObject);
     procedure ACT_CLEARExecute(Sender: TObject);
     procedure ACT_COPYExecute(Sender: TObject);
@@ -58,6 +68,7 @@ type
     procedure ACT_SQLDELPHIExecute(Sender: TObject);
     procedure ACT_DELPHISQLExecute(Sender: TObject);
     procedure chkFullScreanClick(Sender: TObject);
+    procedure ACT_COLORExecute(Sender: TObject);
   private
 //   frmResizer: TFormResizer;
 
@@ -94,9 +105,21 @@ begin
    memoCodigoTemplate.Clear;
 end;
 
+procedure TsqlForDelphi.ACT_COLORExecute(Sender: TObject);
+begin
+   if edtCorWeb.Text <> '' then
+   begin
+      edtTColor.Text := TVSMFormataSQL.HexToTColor(StringReplace(edtCorWeb.Text,'#','',[rfReplaceAll, rfIgnoreCase]));
+      separador.Color := StringToColor(edtTColor.Text) ;
+   end;
+end;
+
 procedure TsqlForDelphi.ACT_COPYExecute(Sender: TObject);
 begin
-   Clipboard.AsText := MemoResultado.Text;
+   if edtTColor.Text <> EmptyStr then
+      Clipboard.AsText := edtTColor.Text
+   else
+      Clipboard.AsText := MemoResultado.Text;
 end;
 
 procedure TsqlForDelphi.ACT_DELPHISQLExecute(Sender: TObject);

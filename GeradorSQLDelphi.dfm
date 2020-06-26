@@ -78,12 +78,25 @@ object sqlForDelphi: TsqlForDelphi
       Top = 1
       Width = 1194
       Height = 312
-      ActivePage = TabSheet2
+      ActivePage = pgHexToColor
       Align = alTop
       Style = tsFlatButtons
       TabOrder = 1
       object TabSheet1: TTabSheet
         Caption = 'Conversor SQL e Delphi'
+        object Label7: TLabel
+          Left = 12
+          Top = 264
+          Width = 55
+          Height = 15
+          Caption = 'Resultado:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
         object Panel1: TPanel
           Left = 0
           Top = 0
@@ -340,6 +353,99 @@ object sqlForDelphi: TsqlForDelphi
           end
         end
       end
+      object pgHexToColor: TTabSheet
+        Caption = 'pgHexToColor'
+        ImageIndex = 2
+        object lblColorWeb: TLabel
+          Left = 14
+          Top = 44
+          Width = 60
+          Height = 15
+          Caption = 'Cor (Hexa):'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7884599
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object lblTColor: TLabel
+          Left = 14
+          Top = 73
+          Width = 104
+          Height = 15
+          Caption = 'Cor Delphi (TColor):'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7884599
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+        end
+        object separador: TLabel
+          Left = 456
+          Top = 75
+          Width = 52
+          Height = 15
+          Caption = 'separador'
+          Color = 15963681
+          ParentColor = False
+        end
+        object LinkLabel1: TLinkLabel
+          Left = 14
+          Top = 99
+          Width = 261
+          Height = 19
+          Caption = 
+            '<a href="https://encycolorpedia.pt">Exemplo de Paolhetas: https:' +
+            '//encycolorpedia.pt</a>'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7884599
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+        end
+        object edtCorWeb: TEdit
+          Left = 152
+          Top = 36
+          Width = 295
+          Height = 23
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7884599
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          MaxLength = 70
+          ParentFont = False
+          TabOrder = 0
+        end
+        object edtTColor: TEdit
+          Left = 152
+          Top = 71
+          Width = 295
+          Height = 23
+          Color = clInfoBk
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = 7884599
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          MaxLength = 70
+          ParentFont = False
+          ReadOnly = True
+          TabOrder = 1
+        end
+        object Button1: TButton
+          Left = 514
+          Top = 63
+          Width = 75
+          Height = 25
+          Action = ACT_COLOR
+          TabOrder = 3
+        end
+      end
     end
     object btnClear: TButton
       Left = 940
@@ -382,6 +488,10 @@ object sqlForDelphi: TsqlForDelphi
     object ACT_TEMPLATE: TAction
       Caption = 'Template'
       OnExecute = ACT_TEMPLATEExecute
+    end
+    object ACT_COLOR: TAction
+      Caption = 'Converter Cor'
+      OnExecute = ACT_COLORExecute
     end
   end
 end
