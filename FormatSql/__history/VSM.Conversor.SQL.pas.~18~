@@ -1,0 +1,65 @@
+unit VSM.Conversor.SQL;
+
+interface
+
+uses
+  VSM.Rest;
+
+  type
+  TVSMFormataSQL = class(TVSMTabela)
+  private
+    Fresult: string;
+
+     { private declarations }
+     function ToJsonString: string;
+    procedure Setresult(const Value: string);
+     property result : string read Fresult write Setresult;
+  protected
+     { protected declarations }
+  public
+     { public declarations }
+
+    function ConsumirSQL(sSql : string)   : string;
+     
+  published
+     { published declarations }
+  end;
+
+
+implementation
+
+uses
+  REST.Json, System.JSON;
+
+{ TVSMFormataSQL }
+
+function TVSMFormataSQL.ConsumirSQL(sSql: string): string;
+var
+   RestRetorno : TVSMRestRetorno;
+   JSonValue : TJSonValue;
+begin
+   Result := '';
+
+   RestRetorno := TVSMRest.New('https://sqlformat.org/api/v1/format')
+                              .adicionarParametro('sql',sSql)
+                              .adicionarParametro('reindent','1')
+                              .build(POST)
+                              .executar
+                              .response;
+
+   JsonValue := TJSonObject.ParseJSONValue(RestRetorno.response);
+
+   Result := JsonValue.ToJSON;
+end;
+
+procedure TVSMFormataSQL.Setresult(const Value: string);
+begin
+  Fresult := Value;
+end;
+
+function TVSMFormataSQL.ToJsonString: string;
+begin
+   result := TJson.ObjectToJsonString(Self);
+end;
+
+end.
