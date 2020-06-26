@@ -33,7 +33,7 @@ type
     Label4: TLabel;
     Label5: TLabel;
     Label6: TLabel;
-    lblDesc: TLabel;
+    Label7: TLabel;
     chkUpper: TCheckBox;
     Panel4: TPanel;
     chkGerarArquivo: TCheckBox;
