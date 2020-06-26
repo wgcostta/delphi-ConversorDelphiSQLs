@@ -3,8 +3,8 @@ unit VSM.Conversor.SQL;
 interface
 
 uses
-  VSM.Rest,
-  uVSMAtributos;
+  Cloud.Rest,
+  Cloud.Dto.Tabela;
 
 CONST 
 TemplatePadrao =  ' <?xml version="1.0" encoding="utf-8" ?> ' +
@@ -51,7 +51,7 @@ TemplatePadrao =  ' <?xml version="1.0" encoding="utf-8" ?> ' +
 
 
   type
-  TVSMFormataSQL = class(TVSMTabela)
+  TVSMFormataSQL = class(TCloudTabela)
   private
     Fresult: string;
 
@@ -80,12 +80,12 @@ uses
 
 function TVSMFormataSQL.ConsumirSQL(sSql: string): String;
 var
-   RestRetorno : TVSMRestRetorno;
+   RestRetorno : TCloudRestRetorno;
    JSonValue : TJSonValue;
 begin
 //   Result := '';
 
-   RestRetorno := TVSMRest.New('https://sqlformat.org/api/v1/format')
+   RestRetorno := TCloudRest.New('https://sqlformat.org/api/v1/format')
                               .adicionarParametro('sql',sSql)
                               .adicionarParametro('reindent','1')
 //                              .adicionarParametro('indent_width','1')

@@ -107,13 +107,11 @@
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="FormatSql\VSM.Conversor.SQL.pas"/>
-        <DCCReference Include="FormatSql\VSM.Rest.pas"/>
-        <DCCReference Include="FormatSql\uVSMAtributos.pas"/>
-        <DCCReference Include="FormatSql\VSM.Model.RetornoJson.pas"/>
-        <DCCReference Include="FormatSql\VSMRestClientParamHeaderDto.pas"/>
         <DCCReference Include="FormatSql\uLkJSON.pas"/>
-        <DCCReference Include="FormatSql\VSM.Rest.Auth.pas"/>
-        <DCCReference Include="FormatSql\VSM.Rest.Enumeradores.pas"/>
+        <DCCReference Include="FormatSql\Cloud.Rest.pas"/>
+        <DCCReference Include="FormatSql\Cloud.Dto.Tabela.pas"/>
+        <DCCReference Include="FormatSql\Cloud.Rest.Client.ParamHeaderDto.pas"/>
+        <DCCReference Include="FormatSql\Cloud.Model.RetornoJson.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
